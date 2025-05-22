@@ -48,10 +48,13 @@ const onFeedbackFormSubmit = event => {
 
   const formDataValues = Object.values(formData);
 
-  if (formDataValues.some(el => el === '')) {
+  if (formDataValues.some(value => value.trim() === '')) {
     alert('Fill please all fields!');
     return;
   }
+
+  formData.email = '';
+  formData.message = '';
 
   event.currentTarget.reset();
   localStorage.removeItem(FORM_KEY);
